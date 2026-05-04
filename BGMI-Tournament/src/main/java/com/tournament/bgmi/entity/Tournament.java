@@ -1,5 +1,6 @@
 package com.tournament.bgmi.entity;
 
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -24,6 +25,8 @@ public class Tournament {
     private Double thirdPrize;
 
     private Integer maxSlots;
+
+    @Column(nullable = false)
     private Integer filledSlots = 0;
 
     private LocalDateTime matchTime;
