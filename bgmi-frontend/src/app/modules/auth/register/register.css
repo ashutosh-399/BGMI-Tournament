@@ -1,0 +1,140 @@
+/* Background */
+.auth-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Card */
+.auth-card {
+  display: flex;
+  width: 850px;
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(15px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* Left */
+.auth-left {
+  flex: 1;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.auth-left h1 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.auth-left p {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* Right */
+.auth-right {
+  flex: 1;
+  padding: 40px;
+  color: white;
+}
+
+.auth-right h3 {
+  margin-bottom: 25px;
+}
+
+/* Inputs */
+.input-group-custom {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background: rgba(255,255,255,0.1);
+  padding: 10px;
+  border-radius: 30px;
+}
+
+.input-group-custom span {
+  margin: 0 10px;
+}
+
+.input-group-custom input {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  width: 100%;
+}
+
+.input-group-custom input::placeholder{
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+
+.form-hint {
+  margin: 12px 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+}
+
+.form-hint .required {
+  font-weight: bold;
+}
+
+/* Button */
+.register-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+/* Footer */
+.login-text {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.login-text a {
+  color: #ff7b7b;
+  text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .auth-card {
+    flex-direction: column;
+    height: auto;
+
+    margin: 20px;
+    border-radius: 12px; /* optional: better look */
+  }
+
+  .auth-left {
+    display: none;
+  }
+
+  
+}
+
+

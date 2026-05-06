@@ -1,0 +1,24 @@
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo">BGMI <span>Arena</span></div>
+
+    <!-- Hamburger -->
+    <div class="hamburger" (click)="toggleMenu()">
+        ☰
+    </div>
+
+    <div class="nav-links" [class.show]="isMenuOpen">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        <!-- if logged in -->
+         @if (auth.isLoggedIn()) {
+             <button (click)="logout()" class="btn btn-outline-danger btn-sm">
+                 Logout
+             </button>
+         }
+    </div>
+</nav>
+@if(isMenuOpen){
+<div class="overlay-bg" (click)="closeMenu()"></div>
+}

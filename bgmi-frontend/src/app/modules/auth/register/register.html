@@ -1,0 +1,64 @@
+<div class="auth-wrapper">
+  <div class="auth-card">
+
+    <!-- Left Section -->
+    <div class="auth-left">
+      <h1>BGMI Arena</h1>
+      <p>Enter the battleground. Compete. Win. Rise.</p>
+    </div>
+
+    <!-- Right Section -->
+    <div class="auth-right">
+      <h3>Create Account</h3>
+
+      <form #form="ngForm" (ngSubmit)="onRegister(form)">
+
+        <!-- Name -->
+        <div class="input-group-custom">
+
+          <span>👤</span>
+          <input type="text" placeholder="Full Name *" [(ngModel)]="registerData.name" name="name" required>
+
+        </div>
+
+
+        <!-- Phone -->
+        <div class="input-group-custom">
+          <span>📱</span>
+          <input type="text" placeholder="Phone *" [(ngModel)]="registerData.phone" name="phone" required>
+        </div>
+
+        <!-- Email -->
+        <div class="input-group-custom">
+          <span>📧</span>
+          <input type="email" placeholder="Email Address *" [(ngModel)]="registerData.email" name="email" required>
+        </div>
+
+
+        <!-- Password -->
+        <div class="input-group-custom">
+          <span>🔒</span>
+          <input type="password" placeholder="Password *" [(ngModel)]="registerData.password" name="password" required>
+        </div>
+
+        <div class="form-hint">
+          Fields marked with <span class="required">*</span> are required
+        </div>
+
+
+        <!-- Button -->
+        <button class="register-btn" type="submit">
+          Register
+        </button>
+
+        <!-- Footer -->
+        <p class="login-text">
+          Already have an account?
+          <a routerLink="/login">Login</a>
+        </p>
+
+      </form>
+    </div>
+
+  </div>
+</div>
