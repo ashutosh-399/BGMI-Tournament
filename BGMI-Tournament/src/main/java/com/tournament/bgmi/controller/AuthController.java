@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -27,12 +29,16 @@ public class AuthController {
     private JwtService jwtService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody Users users){
+    public ResponseEntity<Map<String, String>> register(@RequestBody Users users){
         Boolean status = userService.register(users);
         if (status){
-            return new ResponseEntity<>("User Registered successfully", HttpStatus.CREATED);
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .body(Map.of("message", "User registered success"));
         }
-        return new ResponseEntity<>("User Registered Failed", HttpStatus.BAD_REQUEST);
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("message", "User Registered Failed"));
     }
 
 
@@ -40,7 +46,8 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Users users) {
+    public ResponseEntity<Map<String, String>> login(@RequestBody Users users) {
+        System.out.println("LOGIN HIT");
         UsernamePasswordAuthenticationToken token =
                 new UsernamePasswordAuthenticationToken(users.getEmail(), users.getPassword());
 
@@ -49,16 +56,22 @@ public class AuthController {
             Boolean status = authentication.isAuthenticated();
 
             if (status) {
+                String role = authentication.getAuthorities().iterator().next().getAuthority();
                 String jwtToken = jwtService.generateToken(
-                        users.getEmail(),
-                        users.getRole()
+                        authentication.getName(),
+                        role
                 );
-                return new ResponseEntity<>(jwtToken, HttpStatus.OK);
+                return new ResponseEntity<>(Map.of("token", jwtToken), HttpStatus.OK);
             }
         } catch (AuthenticationException e) {
-            throw new RuntimeException(e);
+            return ResponseEntity
+                    .status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("message", "Invalid Cridential"));
         }
-        return new ResponseEntity<>("Login Failed", HttpStatus.BAD_REQUEST);
+        return
+                ResponseEntity
+                        .status(HttpStatus.BAD_REQUEST)
+                        .body(Map.of("message", "Login failed"));
     }
 
 
