@@ -61,7 +61,11 @@ public class AuthController {
                         authentication.getName(),
                         role
                 );
-                return new ResponseEntity<>(Map.of("token", jwtToken), HttpStatus.OK);
+                return new ResponseEntity<>(
+                        Map.of(
+                                "token", jwtToken,
+                                "role", role
+                        ), HttpStatus.OK);
             }
         } catch (AuthenticationException e) {
             return ResponseEntity

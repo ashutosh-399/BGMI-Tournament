@@ -12,6 +12,11 @@ export class Navbar {
 
   isMenuOpen = false;
 
+  constructor(
+    public auth: Auth, 
+    private router: Router
+  ) {}
+
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
@@ -19,12 +24,6 @@ export class Navbar {
   closeMenu() {
     this.isMenuOpen = false;
   }
-
-
-  constructor(
-    public auth: Auth, 
-    private router: Router
-  ) {}
   
 
   logout() {
