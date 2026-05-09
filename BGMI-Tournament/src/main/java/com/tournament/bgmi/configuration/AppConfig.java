@@ -4,6 +4,7 @@ import com.tournament.bgmi.filter.AppFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,10 +22,13 @@ public class AppConfig {
 
     @Bean
     public SecurityFilterChain security(HttpSecurity http){
-        http.authorizeHttpRequests((req -> req
+        http
+                .cors(cors -> {})
+                .authorizeHttpRequests((req -> req
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .requestMatchers("/api/user/**").hasAnyRole("ADMIN", "PLAYER")
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .anyRequest().authenticated()))
                 .csrf(csrf -> csrf.disable());
         return http.addFilterBefore(appFiletr, UsernamePasswordAuthenticationFilter.class).build();

@@ -1,0 +1,16 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  color: #ccc;
+  font-size: 14px;
+  border-top: 1px solid #222;
+  height: 35px;
+}
+
+
+.footer p {
+  margin: 5px;
+}
+
