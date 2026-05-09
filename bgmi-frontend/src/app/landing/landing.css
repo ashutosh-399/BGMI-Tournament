@@ -15,7 +15,7 @@ html, body {
 .landing {
   display: flex;
   flex-direction: column;
-  height: 100dvh; /* full screen */
+  min-height: 100dvh; /* full screen */
 }
 
 

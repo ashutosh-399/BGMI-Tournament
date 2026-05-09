@@ -1,0 +1,270 @@
+<!-- =========================
+     TOP ADMIN NAVBAR
+    ========================= -->
+
+<div class="admin-dashboard">
+    <nav class="admin-navbar">
+        <div class="nav-left">
+
+            <button class="nav-item always-show" (click)="changeSection('dashboard')">
+                Dashboard
+            </button>
+            <button class="nav-item always-show">
+                Match Req
+            </button>
+            <button class="nav-item always-show">
+                Payments
+            </button>
+            <button class="nav-item mobile-hide" (click)="activeSection='createMatch'">
+                New Match
+            </button>
+            <button class="nav-item mobile-hide" (click)="activeSection='users'">
+                Users
+            </button>
+            <button class="nav-item mobile-hide">
+                Match Results
+            </button>
+            <button class="nav-item mobile-hide">
+                Notifications
+            </button>
+            <button class="nav-item mobile-hide">
+                Settings
+            </button>
+
+            <!-- MORE DROPDOWN ONLY FOR MOBILE -->
+            <div class="dropdown-wrapper mobile-only">
+                <button class="nav-item" (click)="(toggleMoreMenu($event))">
+                    More <span class="arrow">⌄</span>
+                </button>
+
+                @if(showMoreMenu) {
+                <div class="dropdown-menu-custom" (click)="$event.stopPropagation()">
+                    <button class="dropdown-item-custom" (click)="selectMenu('createMatch')">
+                        New Match
+                    </button>
+                    <button class="dropdown-item-custom" (click)="selectMenu('users')">users</button>
+                    <button class="dropdown-item-custom">Match Results</button>
+                    <button class="dropdown-item-custom">Notifications</button>
+                    <button class="dropdown-item-custom">Settings</button>
+                </div>
+                }
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- =========================
+     PAGE CONTENT
+    ========================= -->
+
+    <div class="content-area">
+
+        <!-- DASHBOARD -->
+        @if(activeSection === 'dashboard') {
+
+        <div>
+
+            <h2 class="page-title">Dashboard</h2>
+
+            <div class="row g-3">
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="custom-card bg-primary text-white">
+                        <h5>Total Matches</h5>
+                        <h3>12</h3>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="custom-card bg-success text-white">
+                        <h5>Total Users</h5>
+                        <h3>250</h3>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="custom-card bg-warning text-dark">
+                        <h5>Active Matches</h5>
+                        <h3>5</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        }
+
+
+        <!-- CREATE MATCH -->
+        @if(activeSection === 'createMatch') {
+
+        <div class="custom-card">
+
+            <h2 class="page-title">Create Match</h2>
+
+            <form>
+
+                <!-- Title -->
+                <div class="input-group-horizontal">
+
+                    <!-- LABEL -->
+                    <label class="custom-label">
+                        Match Title
+                    </label>
+
+                    <!-- INPUT -->
+                    <div class="input-wrapper">
+
+                        <input type="text" class="form-control custom-input" placeholder="Enter match title" name="title">
+
+                    </div>
+
+                </div>
+
+                <!-- Description -->
+                <div class="input-group-horizontal">
+                    <label class="custom-label">
+                        Match Description
+                    </label>
+
+                    <div class="input-wrapper">
+                        <textarea class="form-control custom-input" rows="3" placeholder="Match Description"
+                            name="description"></textarea>
+                    </div>
+                </div>
+
+                <!-- Entry Fees -->
+                <div class="input-group-horizontal">
+                    <label class="custom-label">
+                        Entry Fees
+                    </label>
+
+                    <div class="input-wrapper">
+                        <input type="number" class="form-control custom-input" placeholder="Entry Fees" name="entryFees">
+                    </div>
+                </div>
+
+                <!-- First Prize -->
+                <div class="input-group-horizontal">
+                    <label class="custom-label">
+                        First Prize
+                    </label>
+
+                    <input type="number" class="form-control custom-input" placeholder="First Prize" name="firstPrize">
+                </div>
+
+                <!-- Second Prize -->
+                <div class="input-group-horizontal">
+                    <label class="custom-label">
+                        Second Prize
+                    </label>
+                    <input type="number" class="form-control custom-input" placeholder="Second Prize" name="secondPrize">
+                </div>
+
+                <!-- Third Prize -->
+                <div class="input-group-horizontal">
+                    <label class="custom-label">
+                        Third Prize
+                    </label>
+                    <input type="number" class="form-control custom-input" placeholder="Third Prize" name="thirdPrize">
+                </div>
+
+                <!-- Max Slots -->
+                <div class="input-group-horizontal">
+                    <label class="custom-label">
+                        Max Slots
+                    </label>
+                    <input type="number" class="form-control custom-input" placeholder="Max Slots" name="maxSlots">
+                </div>
+
+                <!-- Match Time -->
+                <div class="input-group-horizontal-matchtime">
+                    <label class="custom-label-matchtime">
+                        Match Time
+                    </label>
+                    <input type="datetime-local" class="form-control custom-input date-input" name="matchTime" max="9999-12-31T23:59">
+                </div>
+
+                <!-- Room ID -->
+                <div class="input-group-horizontal">
+                    <label class="custom-label">
+                        Room ID
+                    </label>
+                    <input type="text" class="form-control custom-input" placeholder="Room ID" name="roomId">
+                </div>
+
+                <!-- Room Password -->
+                <div class="input-group-horizontal">
+                    <label class="custom-label">
+                        Room Password
+                    </label>
+                    <input type="text" class="form-control custom-input" placeholder="Room Password" name="roomPassword">
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success w-100">
+                    Create Match
+                </button>
+
+            </form>
+
+        </div>
+        }
+
+
+
+
+        <!-- USERS -->
+        @if(activeSection === 'users') {
+
+        <div class="custom-card">
+
+            <h2 class="page-title">Users</h2>
+
+            <div class="table-responsive">
+
+                <table class="table table-dark table-striped">
+
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Match</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>1</td>
+                            <td>PlayerOne</td>
+                            <td>player1@mail.com</td>
+                            <td>BGMI</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>PlayerTwo</td>
+                            <td>player2@mail.com</td>
+                            <td>COD</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+        }
+
+    </div>
+</div>
+
+@if (showMoreMenu) {
+<div class="overlay-bg" (click)="closeMore()"></div>
+}
