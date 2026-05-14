@@ -21,8 +21,8 @@ public class WebConfig {
                 WebMvcConfigurer.super.addCorsMappings(registry);
                 registry.addMapping("/**")
                         .allowedOrigins(
-                                "http://localhost:*",
-                                "https://*.netlify.app"
+                                "http://localhost:4200",
+                                "https://bgmitour.netlify.app"
                         )
                         .allowedMethods("*")
                         .allowedHeaders("*");
@@ -38,8 +38,8 @@ public class WebConfig {
         CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowedOrigins(List.of(
-                "http://localhost:*",
-                "https://*.netlify.app"
+                "http://localhost:4200",
+                "https://bgmitour.netlify.app"
         ));
         config.setAllowedMethods(List.of("*"));
         config.setAllowedHeaders(List.of("*"));
