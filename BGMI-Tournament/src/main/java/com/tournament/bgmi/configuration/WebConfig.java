@@ -20,7 +20,10 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 WebMvcConfigurer.super.addCorsMappings(registry);
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:4200")
+                        .allowedOrigins(
+                                "http://localhost:*",
+                                "https://*.netlify.app"
+                        )
                         .allowedMethods("*")
                         .allowedHeaders("*");
             }
@@ -34,7 +37,10 @@ public class WebConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(List.of("http://localhost:4200"));
+        config.setAllowedOrigins(List.of(
+                "http://localhost:*",
+                "https://*.netlify.app"
+        ));
         config.setAllowedMethods(List.of("*"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
