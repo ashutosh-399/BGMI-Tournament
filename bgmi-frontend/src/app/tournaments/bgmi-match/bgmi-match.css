@@ -1,8 +1,58 @@
+
+.match-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+/* HEADER */
+.match-header {
+  display: flex;
+  background: #1f1f1f;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 0;
+  border-radius: 8px;
+}
+
+/* ROW */
+.match-row {
+  display: flex;
+  background: #2a2a2a;
+  margin-top: 8px;
+  padding: 10px 0;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.match-row:hover {
+  background: #333;
+}
+
+/* COLUMN */
+.col {
+  flex: 1;
+  text-align: center;
+  color: #ddd;
+  font-size: 14px;
+}
+
+/* STATUS COLOR */
+.status {
+  font-weight: bold;
+  color: #4caf50;
+}
+
+
+
+
+
+
 .container{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  min-height: 100dvh;
+  min-height: calc(100dvh - 95px);
   align-items: center;
 }
 
@@ -17,7 +67,7 @@
 
 /* Card (MAIN BOX STYLE) */
 .card {
-    flex: 1 1 300px; /* responsive magic */
+  flex: 1 1 300px; /* responsive magic */
   max-width: 350px;
   width: 100%;
   padding: 35px 25px;
