@@ -8,6 +8,7 @@ import { environment } from '../../../environments/environment';
 export class Auth {
 
   private baseUrl = environment.apiUrl;
+  
 
   constructor(private http: HttpClient){}
 
@@ -16,6 +17,7 @@ export class Auth {
   }
 
   login(data: any){
+    console.log(this.baseUrl);
     return this.http.post(`${this.baseUrl}/api/auth/login`, data);
   }
 
