@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -33,12 +34,14 @@ public class AdminController {
 
 
     @PostMapping("/createTournament")
-    public ResponseEntity<String> createTournament(@RequestBody Tournament tournament){
+    public ResponseEntity<Map<String, String>> createTournament(@RequestBody Tournament tournament){
         Boolean status = tournamentService.createTournament(tournament);
         if (status){
-            return new ResponseEntity<>("Tournament Created", HttpStatus.CREATED);
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(Map.of("message", "Tournament Created"));
         }
-        return new ResponseEntity<>("Failed", HttpStatus.BAD_REQUEST);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(Map.of("message", "Failed"));
     }
 
 

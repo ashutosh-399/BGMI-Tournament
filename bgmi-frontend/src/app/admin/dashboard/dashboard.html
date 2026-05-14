@@ -104,7 +104,7 @@
 
             <h2 class="page-title">Create Match</h2>
 
-            <form>
+            <form (ngSubmit) = "createMatch()" #matchForm="ngForm">
 
                 <!-- Title -->
                 <div class="input-group-horizontal">
@@ -117,7 +117,7 @@
                     <!-- INPUT -->
                     <div class="input-wrapper">
 
-                        <input type="text" class="form-control custom-input" placeholder="Enter match title" name="title">
+                        <input type="text" class="form-control custom-input" placeholder="Enter match title" name="title" [(ngModel)]="match.title" required>
 
                     </div>
 
@@ -131,7 +131,7 @@
 
                     <div class="input-wrapper">
                         <textarea class="form-control custom-input" rows="3" placeholder="Match Description"
-                            name="description"></textarea>
+                            name="description" [(ngModel)]="match.description" required></textarea>
                     </div>
                 </div>
 
@@ -142,7 +142,7 @@
                     </label>
 
                     <div class="input-wrapper">
-                        <input type="number" class="form-control custom-input" placeholder="Entry Fees" name="entryFees">
+                        <input type="number" class="form-control custom-input" placeholder="Entry Fees" name="entryFees" [(ngModel)]="match.entryFees" required>
                     </div>
                 </div>
 
@@ -152,7 +152,7 @@
                         First Prize
                     </label>
 
-                    <input type="number" class="form-control custom-input" placeholder="First Prize" name="firstPrize">
+                    <input type="number" class="form-control custom-input" placeholder="First Prize" name="firstPrize" [(ngModel)]="match.firstPrize" required>
                 </div>
 
                 <!-- Second Prize -->
@@ -160,7 +160,7 @@
                     <label class="custom-label">
                         Second Prize
                     </label>
-                    <input type="number" class="form-control custom-input" placeholder="Second Prize" name="secondPrize">
+                    <input type="number" class="form-control custom-input" placeholder="Second Prize" name="secondPrize" [(ngModel)]="match.secondPrize" required>
                 </div>
 
                 <!-- Third Prize -->
@@ -168,7 +168,7 @@
                     <label class="custom-label">
                         Third Prize
                     </label>
-                    <input type="number" class="form-control custom-input" placeholder="Third Prize" name="thirdPrize">
+                    <input type="number" class="form-control custom-input" placeholder="Third Prize" name="thirdPrize" [(ngModel)]="match.thirdPrize" required>
                 </div>
 
                 <!-- Max Slots -->
@@ -176,7 +176,7 @@
                     <label class="custom-label">
                         Max Slots
                     </label>
-                    <input type="number" class="form-control custom-input" placeholder="Max Slots" name="maxSlots">
+                    <input type="number" class="form-control custom-input" placeholder="Max Slots" name="maxSlots" [(ngModel)]="match.maxSlot" required>
                 </div>
 
                 <!-- Match Time -->
@@ -184,7 +184,7 @@
                     <label class="custom-label-matchtime">
                         Match Time
                     </label>
-                    <input type="datetime-local" class="form-control custom-input date-input" name="matchTime" max="9999-12-31T23:59">
+                    <input type="datetime-local" class="form-control custom-input date-input" name="matchTime" max="9999-12-31T23:59" [(ngModel)]="match.matchTime" required>
                 </div>
 
                 <!-- Room ID -->
@@ -192,7 +192,7 @@
                     <label class="custom-label">
                         Room ID
                     </label>
-                    <input type="text" class="form-control custom-input" placeholder="Room ID" name="roomId">
+                    <input type="text" class="form-control custom-input" placeholder="Room ID" name="roomId" [(ngModel)]="match.roomId" required>
                 </div>
 
                 <!-- Room Password -->
@@ -200,7 +200,7 @@
                     <label class="custom-label">
                         Room Password
                     </label>
-                    <input type="text" class="form-control custom-input" placeholder="Room Password" name="roomPassword">
+                    <input type="text" class="form-control custom-input" placeholder="Room Password" name="roomPassword" [(ngModel)]="match.password" required>
                 </div>
 
                 <!-- Submit Button -->
