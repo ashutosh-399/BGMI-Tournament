@@ -1,21 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Auth {
-  
-  private baseUrl = 'http://localhost:8090/api/auth';
+
+  private baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient){}
 
   register(data: any){
-    return this.http.post(`${this.baseUrl}/register`, data);
+    return this.http.post(`${this.baseUrl}/api/auth/register`, data);
   }
 
   login(data: any){
-    return this.http.post(`${this.baseUrl}/login`, data);
+    return this.http.post(`${this.baseUrl}/api/auth/login`, data);
   }
 
   isLoggedIn(): boolean {
